@@ -25,7 +25,7 @@ class Task{
     }
     public static function all()
     {
-        $arrayTasks = static::getConnection()->query("SELECT * FROM `tasks`")->fetch_all();
+        $arrayTasks = static::getConnection()->query("SELECT * FROM `tasks`")->fetch_all(MYSQLI_ASSOC);
         return $arrayTasks;
     }
 }
