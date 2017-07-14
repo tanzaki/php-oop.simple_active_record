@@ -9,6 +9,11 @@ class Task{
 
     public function save()
     {
+        $host = 'localhost';//point to same server <XAMPP>
+        $username = 'root'; //XAMPP default
+        $password = '';     //XAMPP default is no password
+        $database = 'test'; //XAMPP default
+        $connect = new mysqli($host,$username,$password,$database);
         echo "saving Task {$this->title} to database";
     }
 }
