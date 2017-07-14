@@ -14,6 +14,7 @@ class Task{
         $password = '';     //XAMPP default is no password
         $database = 'test'; //XAMPP default
         $connect = new mysqli($host,$username,$password,$database);
+        $connect->query("INSERT INTO `tasks` (`id`, `title`) VALUES (NULL, 'task title');");
         echo "saving Task {$this->title} to database";
     }
 }
