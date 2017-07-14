@@ -29,6 +29,8 @@ class Task{
         $tasks = [];
         foreach ($arrayTasks as $arrayTask){
             $task = new Task();
+            $task->id = $arrayTask['id'];
+            $task->title = $arrayTask['title'];
             $tasks[] = $task;
         }
         return $tasks;
