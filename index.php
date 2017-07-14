@@ -10,7 +10,8 @@ class Task{
 }
 $task = new Task();
 $title = $_GET['title'];
-echo $title;
+$task->title = $title;
+echo $task->title;
 ?>
 <form>
     <input name="title" type="text" title="">
