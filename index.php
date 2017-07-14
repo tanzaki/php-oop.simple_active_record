@@ -54,8 +54,7 @@ class Task{
 }
 $task = new Task();
 if(isset($_GET['delete_id'])){
-    $task = Task::find($_GET['delete_id']);
-    $task->delete();
+    Task::find($_GET['delete_id'])->delete();
 }
 if (isset($_GET['title'])) {
     $title = $_GET['title'];
