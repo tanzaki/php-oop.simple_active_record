@@ -23,12 +23,17 @@ class Task{
         $task_id = $connection->insert_id;
         echo "saving Task {$task_id} to database";
     }
+    public static function all()
+    {
+        return static::getConnection()->query("SELECT * FROM `tasks`")->fetch_all();
+    }
 }
 $task = new Task();
 $title = $_GET['title'];
 $task->title = $title;
 $task->save();
 ?>
+<pre><?php print_r(Task::all()); ?></pre>
 <form>
     <input name="title" type="text" title="">
     <input type="submit" value="Create">
