@@ -38,9 +38,12 @@ class Task{
     }
 }
 $task = new Task();
-$title = $_GET['title'];
-$task->title = $title;
-$task->save();
+if (isset($_GET['title'])) {
+    $title = $_GET['title'];
+    $task->title = $title;
+    $task->save();
+    header('Location: .');
+}
 ?>
 <form>
     <input name="title" type="text" title="">
