@@ -25,7 +25,8 @@ class Task{
     }
     public static function all()
     {
-        $arrayTasks = static::getConnection()->query("SELECT * FROM `tasks`")->fetch_all(MYSQLI_ASSOC);
+        $arrayTasks = static::getConnection()->query("SELECT * FROM `tasks` ORDER BY `tasks`.`id` DESC")->fetch_all(MYSQLI_ASSOC);
+        //let copy this command from phpMyAdmin
         $tasks = [];
         foreach ($arrayTasks as $arrayTask){
             $task = new Task();
@@ -47,5 +48,7 @@ $task->save();
 </form>
 <?php
 foreach (Task::all() as $task){
-    echo "<li>{$task->title}</li>";
+    echo "<li>
+{$task->id}.
+{$task->title}</li>";
 }
