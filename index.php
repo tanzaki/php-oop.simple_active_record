@@ -41,8 +41,11 @@ $title = $_GET['title'];
 $task->title = $title;
 $task->save();
 ?>
-<pre><?php print_r(Task::all()); ?></pre>
 <form>
     <input name="title" type="text" title="">
     <input type="submit" value="Create">
 </form>
+<?php
+foreach (Task::all() as $task){
+    echo "<li>{$task->title}</li>";
+}
