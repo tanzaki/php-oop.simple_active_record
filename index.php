@@ -7,7 +7,7 @@
  */
 class Task{
 
-    public function getConnection()
+    public static function getConnection()
     {
         $host = 'localhost';//point to same server <XAMPP>
         $username = 'root'; //XAMPP default
@@ -18,7 +18,7 @@ class Task{
     }
     public function save()
     {
-        $connection = $this->getConnection();
+        $connection = Task::getConnection();
         $connection->query("INSERT INTO `tasks` (`id`, `title`) VALUES (NULL, '{$this->title}');");
         $task_id = $connection->insert_id;
         echo "saving Task {$task_id} to database";
