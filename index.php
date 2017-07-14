@@ -65,7 +65,7 @@ if (isset($_GET['title'])) {
 }
 ?>
 <form>
-    <input name="title" type="text" title="">
+    <input autofocus name="title" type="text" title="">
     <input type="submit" value="Create">
 </form>
 <?php
