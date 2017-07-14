@@ -9,3 +9,8 @@ class Task{
 
 }
 $task = new Task();
+?>
+<form>
+    <input type="text" title="">
+    <input type="submit" value="Create">
+</form>
