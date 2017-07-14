@@ -26,7 +26,11 @@ class Task{
     public static function all()
     {
         $arrayTasks = static::getConnection()->query("SELECT * FROM `tasks`")->fetch_all(MYSQLI_ASSOC);
-        return $arrayTasks;
+        $tasks = [];
+        foreach ($arrayTasks as $arrayTask){
+            $tasks[] = new Task();
+        }
+        return $tasks;
     }
 }
 $task = new Task();
