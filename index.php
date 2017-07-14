@@ -9,6 +9,7 @@ class Task{
 
 }
 $task = new Task();
+echo $_GET['title'];
 ?>
 <form>
     <input name="title" type="text" title="">
