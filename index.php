@@ -23,6 +23,21 @@ class Task{
         $task_id = $connection->insert_id;
         echo "saving Task {$task_id} to database";
     }
+
+    public static function find($id)
+    {
+        $taskArray = static::getConnection()->query("SELECT * FROM `tasks` WHERE `id` = ".$id)->fetch_assoc();
+        $task = new Task();
+        $task->id = $taskArray['id'];
+        $task->title = $taskArray['title'];
+
+        return $task;
+    }
+
+    public function delete()
+    {
+        static::getConnection()->query("DELETE FROM `tasks` WHERE `tasks`.`id` = ".$this->id);
+    }
     public static function all()
     {
         $arrayTasks = static::getConnection()->query("SELECT * FROM `tasks` ORDER BY `tasks`.`id` DESC")->fetch_all(MYSQLI_ASSOC);
@@ -38,6 +53,10 @@ class Task{
     }
 }
 $task = new Task();
+if(isset($_GET['delete_id'])){
+    $task = Task::find($_GET['delete_id']);
+    $task->delete();
+}
 if (isset($_GET['title'])) {
     $title = $_GET['title'];
     $task->title = $title;
@@ -53,5 +72,7 @@ if (isset($_GET['title'])) {
 foreach (Task::all() as $task){
     echo "<li>
 {$task->id}.
-{$task->title}</li>";
+{$task->title}
+<a href='?delete_id={$task->id}'>Delete</a>
+</li>";
 }
