@@ -18,8 +18,10 @@ class Task{
     }
     public function save()
     {
-        $this->getConnection()->query("INSERT INTO `tasks` (`id`, `title`) VALUES (NULL, '{$this->title}');");
-        echo "saving Task {$this->title} to database";
+        $connection = $this->getConnection();
+        $connection->query("INSERT INTO `tasks` (`id`, `title`) VALUES (NULL, '{$this->title}');");
+        $task_id = $connection->insert_id;
+        echo "saving Task {$task_id} to database";
     }
 }
 $task = new Task();
