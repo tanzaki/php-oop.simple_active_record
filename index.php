@@ -25,7 +25,8 @@ class Task{
     }
     public static function all()
     {
-        return static::getConnection()->query("SELECT * FROM `tasks`")->fetch_all();
+        $arrayTasks = static::getConnection()->query("SELECT * FROM `tasks`")->fetch_all();
+        return $arrayTasks;
     }
 }
 $task = new Task();
