@@ -7,11 +7,15 @@
  */
 class Task{
 
+    public function save()
+    {
+        echo "saving Task {$this->title} to database";
+    }
 }
 $task = new Task();
 $title = $_GET['title'];
 $task->title = $title;
-echo $task->title;
+$task->save();
 ?>
 <form>
     <input name="title" type="text" title="">
