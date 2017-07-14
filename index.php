@@ -28,7 +28,8 @@ class Task{
         $arrayTasks = static::getConnection()->query("SELECT * FROM `tasks`")->fetch_all(MYSQLI_ASSOC);
         $tasks = [];
         foreach ($arrayTasks as $arrayTask){
-            $tasks[] = new Task();
+            $task = new Task();
+            $tasks[] = $task;
         }
         return $tasks;
     }
